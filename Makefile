@@ -64,7 +64,7 @@ dist/index.js : $(EXECUTABLES)
 	# sily hack to get around the output containing references
 	# to require("fs") and require("path")
 	echo "(function() {" > dist/index.js
-	sed "s/require([^)]*)/null/" woff2_to_ttf.js >> dist/index.js
+	sed "s/require([^)]*)/null/g" woff2_to_ttf.js >> dist/index.js
 	echo >> dist/index.js
 	cat index.js >> dist/index.js
 	echo "})();" >> dist/index.js
