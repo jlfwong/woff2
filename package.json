@@ -2,7 +2,7 @@
   "name": "woff2-to-ttf",
   "version": "1.0.0",
   "description": "Convert woff2 fonts to ttf. Usable in browser.",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

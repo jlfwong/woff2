@@ -63,7 +63,11 @@ endif
 $(EXECUTABLES) : $(EXE_OBJS) $(OBJS) deps
 	$(CXX) $(LDFLAGS) $(OBJS) $(COMMONOBJ) $(DECOBJ) $(EXE_OBJS) -o $@
 
+dist/index.js : $(EXECUTABLES)
+	node_modules/.bin/browserify -s 'woff2ToTTF' index.js > $@
+
 deps :
+	npm install
 	AR=$(AR) CC=$(CC) $(MAKE) -C $(BROTLI) lib
 
 clean :

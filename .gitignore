@@ -4,3 +4,4 @@ woff2_to_ttf.js
 /woff2_compress
 /woff2_decompress
 /woff2_info
+node_modules

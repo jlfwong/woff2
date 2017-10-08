@@ -1,4 +1,4 @@
-const Module = require('./woff2_to_ttf')
+var Module = require('./woff2_to_ttf')
 
 module.exports = {
   convert: function(woff2ByteArray) {
