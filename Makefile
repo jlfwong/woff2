@@ -15,6 +15,8 @@ COMMON_FLAGS += $(CANONICAL_PREFIXES)
 COMMON_FLAGS += $(NOISY_LOGGING)
 COMMON_FLAGS += -DNDEBUG
 COMMON_FLAGS += -O2
+COMMON_FLAGS += -s NO_DYNAMIC_EXECUTION=1
+COMMON_FLAGS += -s NO_FILESYSTEM=1
 
 CPPFLAGS += -std=c++11
 CPPFLAGS += -fno-exceptions
@@ -32,7 +34,6 @@ LDFLAGS += -s ERROR_ON_UNDEFINED_SYMBOLS=1
 LDFLAGS += -s EXPORTED_FUNCTIONS='["_output_bytes", "_output_length", "_woff2_to_TTF"]'
 LDFLAGS += -s EXPORT_NAME='"EmscriptenModule"'
 LDFLAGS += -s MODULARIZE=1
-LDFLAGS += -s NO_DYNAMIC_EXECUTION=1
 LDFLAGS += --llvm-lto 2
 
 ARFLAGS = cr
@@ -67,7 +68,11 @@ $(EXECUTABLES) : $(EXE_OBJS) $(OBJS) deps
 	$(CXX) $(LDFLAGS) $(OBJS) $(COMMONOBJ) $(DECOBJ) $(EXE_OBJS) -o $@
 
 dist/index.js : $(EXECUTABLES)
-	cat woff2_to_ttf.js > dist/index.js
+	# I can't figure out how to get emscripten to generate
+	# the output targeting *only* the browser, so this is my
+	# sily hack to get around the output containing references
+	# to require("fs") and require("path")
+	sed "s/require(.*)/null/" woff2_to_ttf.js > dist/index.js
 	echo >> dist/index.js
 	cat index.js >> dist/index.js
 
