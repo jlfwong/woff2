@@ -27,7 +27,6 @@ CPPFLAGS += $(COMMON_FLAGS)
 CFLAGS += $(COMMON_FLAGS)
 
 LDFLAGS += $(COMMON_FLAGS)
-LDFLAGS += -s ALLOW_MEMORY_GROWTH=1
 LDFLAGS += -s NO_EXIT_RUNTIME=1
 LDFLAGS += --memory-init-file 0
 LDFLAGS += -s ERROR_ON_UNDEFINED_SYMBOLS=1
@@ -37,13 +36,6 @@ LDFLAGS += -s MODULARIZE=1
 LDFLAGS += --llvm-lto 2
 
 ARFLAGS = cr
-
-ifeq ($(OS), Darwin)
-  CPPFLAGS += -DOS_MACOSX
-else
-  COMMON_FLAGS += -fno-tree-vrp
-  ARFLAGS += f
-endif
 
 SRCDIR = src
 
