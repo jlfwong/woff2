@@ -1,4 +1,4 @@
-var Module = require('./woff2_to_ttf')
+var Module = EmscriptenModule({ENVIRONMENT: 'WEB'})
 
 module.exports = {
   convert: function(woff2ByteArray) {
