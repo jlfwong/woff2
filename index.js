@@ -1,5 +1,3 @@
-var Module = EmscriptenModule({ENVIRONMENT: 'WEB'})
-
 module.exports = {
   convert: function(woff2ByteArray) {
     var buf = Module._malloc(woff2ByteArray.length*woff2ByteArray.BYTES_PER_ELEMENT);
