@@ -1,0 +1,19 @@
+{
+  "name": "woff2-to-ttf",
+  "version": "1.0.0",
+  "description": "Convert woff2 fonts to ttf. Usable in browser.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jlfwong/woff2.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jlfwong/woff2/issues"
+  },
+  "homepage": "https://github.com/jlfwong/woff2#readme"
+}

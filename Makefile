@@ -30,6 +30,7 @@ LDFLAGS += -s ALLOW_MEMORY_GROWTH=1
 LDFLAGS += -s NO_EXIT_RUNTIME=1
 LDFLAGS += --memory-init-file 0
 LDFLAGS += -s ERROR_ON_UNDEFINED_SYMBOLS=1
+LDFLAGS += -s EXPORTED_FUNCTIONS='["_output_bytes", "_output_length", "_woff2_to_TTF"]'
 
 ARFLAGS = cr
 
@@ -52,7 +53,7 @@ DECOBJ = $(BROTLIOBJ)/dec/*.o
 COMMONOBJ = $(BROTLIOBJ)/common/*.o
 
 OBJS = $(patsubst %, $(SRCDIR)/%, $(OUROBJ))
-EXECUTABLES=woff2_decompress.js
+EXECUTABLES=woff2_to_ttf.js
 EXE_OBJS=$(patsubst %.js, $(SRCDIR)/%.o, $(EXECUTABLES))
 
 ifeq (,$(wildcard $(BROTLI)/*))
