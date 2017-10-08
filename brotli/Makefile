@@ -23,12 +23,9 @@ all: test
 $(DIRS):
 	mkdir -p $@
 
-$(EXECUTABLE): $(OBJECTS)
-	$(CC) $(LDFLAGS) $(OBJECTS) -lm -o $(BINDIR)/$(EXECUTABLE)
-
 lib: $(LIBOBJECTS)
 	rm -f $(LIB_A)
-	ar -crs $(LIB_A) $(LIBOBJECTS)
+	$(AR) -M $(LIB_A) $(LIBOBJECTS)
 
 test: $(EXECUTABLE)
 	tests/compatibility_test.sh
